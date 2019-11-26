@@ -16,7 +16,7 @@ jobs:
          key: v1-tox-{{ checksum "tox.ini" }}-{{ checksum "requirements.txt" }}
          paths:
            - .tox
-      - run: tox -e flake8
+      - run: tox -e flake8 --per-file-ignores ='tests/models.py:F401'
 
   isort:
     docker:
@@ -52,8 +52,8 @@ jobs:
            - .tox
       - run: tox -e py2-django1_11
       - run: tox -e py3-django1_11
-      - run: tox -e py3-django2_0
       - run: tox -e py3-django2_1
+      - run: tox -e py3-django2_2
       - run: tox -e coverage
 
 workflows:
