@@ -16,7 +16,7 @@ jobs:
          key: v1-tox-{{ checksum "tox.ini" }}-{{ checksum "requirements.txt" }}
          paths:
            - .tox
-      - run: tox -e flake8
+      - run: tox -e flake8 --per-file-ignores ='tests/models.py:F401'
 
   isort:
     docker:
